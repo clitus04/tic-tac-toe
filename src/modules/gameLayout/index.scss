@@ -1,0 +1,34 @@
+.game__layout {
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .game__layout__header {
+        text-align: center;
+        padding: 1rem;
+        font-size: 2rem;
+    }
+
+    .game__layout__body {
+        margin-top: 2rem;
+
+        .game__row {
+            display: flex;
+
+            .game__cell {
+                height: 10vw;
+                width: 10vw;
+                border: 1px solid #fff;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+    }
+}
