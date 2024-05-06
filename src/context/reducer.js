@@ -6,6 +6,8 @@ export const initialState = {
     ["", "", ""],
     ["", "", ""],
   ],
+  X: [],
+  O: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -17,6 +19,12 @@ export const reducer = (state = initialState, action) => {
       return { ...state, data: newData };
     case actions.GAMEOVER:
       return { ...state, data: initialState.data };
+    case actions.UPDATEPLAYERDATA:
+      const prevDatas = state[action.payload.player];
+      return {
+        ...state,
+        [action.payload.player]: [...prevDatas, action.payload.time],
+      };
     default:
       return state;
   }

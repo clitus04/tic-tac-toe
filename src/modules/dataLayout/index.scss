@@ -1,0 +1,45 @@
+.data__layout {
+    flex-basis: 25%;
+    border-left: 1px solid white;
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .data__layout__tabpanel {
+        display: flex;
+
+        span {
+            border: 1px solid white;
+            padding: 0.5rem 2rem;
+            cursor: pointer;
+
+            &:nth-child(1) {
+                border-top-left-radius: 0.5rem;
+                border-bottom-left-radius: 0.5rem;
+            }
+
+            &:nth-last-child(1) {
+                border-top-right-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+
+            &.selected {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+
+    .data__layout__tabview{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+         
+        .wins__view{
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

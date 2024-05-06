@@ -1,10 +1,9 @@
 .game__layout {
     height: 100vh;
-    background-color: black;
-    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-basis: 75%;
 
     .game__layout__header {
         text-align: center;

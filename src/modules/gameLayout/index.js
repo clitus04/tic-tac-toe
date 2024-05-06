@@ -7,8 +7,12 @@ import { checkFilled, checkWin } from "../../utility";
 const GameLayout = () => {
   const [{ data }, dispatch] = useContextValue();
   const [isXCurrent, setIsXCurrent] = useState(true);
+  const [startTime, setStartTime] = useState(null);
 
   const handleClick = (row, column, value) => {
+    if (!startTime) {
+      setStartTime(new Date().getTime());
+    }
     if (value === "") {
       const payload = { row, column, value: isXCurrent ? "X" : "O" };
       dispatch({ type: actions.ADDPLAYERVALUE, payload });
@@ -19,15 +23,23 @@ const GameLayout = () => {
   };
 
   const gameOver = (msg) => {
+    setStartTime(null);
     setTimeout(() => {
       alert(msg);
       dispatch({ type: actions.GAMEOVER });
     }, 100);
   };
 
+  const updateGameData = (player) => {
+    const endTime = new Date().getTime();
+    const payload = { player, time: (endTime - startTime) / 1000 };
+    dispatch({ type: actions.UPDATEPLAYERDATA, payload });
+  };
+
   useEffect(() => {
     const winnedPlayer = checkWin(data);
     if (winnedPlayer) {
+      updateGameData(winnedPlayer);
       gameOver(`${winnedPlayer} Winned!!`);
       setIsXCurrent(true);
     }
